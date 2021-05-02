@@ -1,8 +1,14 @@
 {
-  "name": "react-url",
-  "version": "0.1.0",
-  "private": true,
+  "name": "react-url-image-downloader",
+  "version": "0.0.1",
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
   "dependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/preset-react": "^7.13.13",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -20,7 +26,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "publish:npm": "rm -rf dist && mkdir dist &&  babel src -d dist --copy-files"
   },
   "eslintConfig": {
     "extends": [
