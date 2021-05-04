@@ -23,6 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "coverage": "npm test -- --coverage --watchAll=false",
     "publish:npm": "set NODE_ENV=production && rm -rf dist && mkdir dist && npx babel src/components/AltaMap --out-dir dist --copy-files"
   },
   "eslintConfig": {
