@@ -1,7 +1,7 @@
 {
   "name": "react-url-image-downloader",
   "version": "0.0.4",
-  "description": "https://betterprogramming.pub/the-battle-of-bundlers-6333a4e3eda9",
+  "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
