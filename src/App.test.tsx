@@ -1,9 +1,30 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { configure, shallow, mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import userEvent from '@testing-library/user-event';
+
 import App from './App';
 
-test('renders img tag', () => {
-  render(<App />);
-  const imgElement = screen.getByTestId('img');
-  expect(imgElement).toBeInTheDocument();
+configure({ adapter: new Adapter() });
+
+describe('App component', function () {
+  it('should test App component', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should render App component', () => {
+    expect(shallow(<App />).find('.container').length).toEqual(1);
+  });
+
+  it('should render img tag', function () {
+    expect(shallow(<App />).find('img').length).toEqual(1);
+  });
+
+  it('should render button tag', function () {
+    expect(shallow(<App />).find('button').length).toEqual(1);
+  });
+
+  it('should render button tag', function () {
+    expect(shallow(<App />).find('button').length).toEqual(1);
+  });
 });
