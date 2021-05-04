@@ -1,7 +1,7 @@
 # react-url-image-downloader
 
  [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE)
- [![npm version](https://img.shields.io/badge/npm-v0.0.4-green?style=flat)](https://www.npmjs.com/package/react-url-image-downloader/v/0.0.4)
+ [![npm version](https://img.shields.io/badge/npm-v0.0.1-green?style=flat)](https://www.npmjs.com/package/react-url-image-downloader)
  <!-- [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]() -->
 
 ## Installation
