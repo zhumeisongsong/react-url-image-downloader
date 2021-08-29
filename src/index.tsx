@@ -1,5 +1,4 @@
 import React, { useCallback, useMemo, FC } from 'react';
-import './index.css';
 
 type Props = {
   disableCache?: boolean;
@@ -57,7 +56,11 @@ const UrlImageDownloader: FC<Props> = ({
     () => (
       <React.StrictMode>
         <div className="container">
-          <img src={imageUrl} alt="area" />
+          <img
+            src={imageUrl}
+            alt="area"
+            style={{ width: '100%', border: '0', margin: '0' }}
+          />
           <a href={imageUrl} download onClick={(e) => onButtonClick(e)}>
             {buttonText}
           </a>
