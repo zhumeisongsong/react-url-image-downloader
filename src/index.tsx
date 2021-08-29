@@ -12,42 +12,46 @@ const UrlImageDownloader: FC<Props> = ({
   buttonText = 'Download',
   imageUrl = ''
 }: Props) => {
-  const onButtonClick = useCallback((e) => {
-    if (e.preventDefault) {
-      e.preventDefault();
-    }
+  const onButtonClick = useCallback(
+    (e) => {
+      if (e.preventDefault) {
+        e.preventDefault();
+      }
 
-    if (!imageUrl.length) {
-      console.log('Please add an image url');
-      return;
-    }
-    const fetchUrl = `${e.target.href}${
-      disableCache ? `?dummy=${Math.floor(Date.now())}` : ''
-    }`;
+      if (!imageUrl.length) {
+        console.log('Please add an image url');
+        return;
+      }
 
-    fetch(fetchUrl, {
-      method: 'GET',
-      headers: {}
-    })
-      .then((response) => {
-        response.arrayBuffer().then(function (buffer) {
-          const url = window.URL.createObjectURL(new Blob([buffer]));
-          const link = document.createElement('a');
+      const fetchUrl = `${e.target.href}${
+        disableCache ? `?dummy=${Math.floor(Date.now())}` : ''
+      }`;
 
-          link.href = url;
-          link.setAttribute(
-            'download',
-            imageUrl.substr(imageUrl.lastIndexOf('/') + 1)
-          );
-          document.body.appendChild(link);
-          link.click();
-        });
+      fetch(fetchUrl, {
+        method: 'GET',
+        headers: {}
       })
-      .catch((error) => {
-        console.log(error);
-        return error;
-      });
-  }, []);
+        .then((response) => {
+          response.arrayBuffer().then(function (buffer) {
+            const url = window.URL.createObjectURL(new Blob([buffer]));
+            const link = document.createElement('a');
+
+            link.href = url;
+            link.setAttribute(
+              'download',
+              imageUrl.substr(imageUrl.lastIndexOf('/') + 1)
+            );
+            document.body.appendChild(link);
+            link.click();
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          return error;
+        });
+    },
+    [disableCache]
+  );
 
   return useMemo(
     () => (
