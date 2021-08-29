@@ -10,7 +10,7 @@ npm i react-url-image-downloader
 
 import UrlImageDownloader from 'react-url-image-downloader'
 
-<UrlImageDownloader imageUrl="https://i.postimg.cc/9MFvz25j/movingtogether-primary-804744d5605a360dc6a2faca9183c51f.jpg">
+<UrlImageDownloader imageUrl="https://i.postimg.cc/9MFvz25j/movingtogether-primary-804744d5605a360dc6a2faca9183c51f.jpg" />
 ```
 
 <!-- 
