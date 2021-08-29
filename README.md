@@ -39,3 +39,5 @@ all snapshot files should be committed alongside the modules they are covering a
 <!-- https://www.freecodecamp.org/news/how-to-make-a-beautiful-tiny-npm-package-and-publish-it-2881d4307f78/
 
 https://stackoverflow.com/questions/55304436/webpack-with-typescript-getting-typescript-emitted-no-output-error#comment97338116_55304691 -->
+
+<!-- https://blog.logrocket.com/the-complete-guide-to-publishing-a-react-package-to-npm/ -->

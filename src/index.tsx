@@ -1,10 +1,17 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, FC } from 'react';
+import './index.css';
 
-const UrlImageDownloader = ({
+type Props = {
+  disableCache?: boolean;
+  buttonText?: string;
+  imageUrl: string;
+};
+
+const UrlImageDownloader: FC<Props> = ({
   disableCache = true,
   buttonText = 'Download',
-  imageUrl = 'https://i.postimg.cc/9MFvz25j/movingtogether-primary-804744d5605a360dc6a2faca9183c51f.jpg'
-}) => {
+  imageUrl = ''
+}: Props) => {
   const onButtonClick = useCallback((e) => {
     if (e.preventDefault) {
       e.preventDefault();
@@ -14,8 +21,11 @@ const UrlImageDownloader = ({
       console.log('Please add an image url');
       return;
     }
+    const fetchUrl = `${e.target.href}${
+      disableCache ? `?dummy=${Math.floor(Date.now())}` : ''
+    }`;
 
-    fetch(e.target.href + disableCache ? '' : `?dummy=${Math.floor(Date.now())}`, {
+    fetch(fetchUrl, {
       method: 'GET',
       headers: {}
     })
@@ -23,6 +33,7 @@ const UrlImageDownloader = ({
         response.arrayBuffer().then(function (buffer) {
           const url = window.URL.createObjectURL(new Blob([buffer]));
           const link = document.createElement('a');
+
           link.href = url;
           link.setAttribute(
             'download',
@@ -32,21 +43,24 @@ const UrlImageDownloader = ({
           link.click();
         });
       })
-      .catch((err) => {
-        alert(err);
+      .catch((error) => {
+        console.log(error);
+        return error;
       });
   }, []);
 
   return useMemo(
     () => (
-      <div className="container" >
-        <img width="100%" src={imageUrl} alt="area" />
-        <a href={imageUrl} download onClick={(e) => onButtonClick(e)}>
-          {buttonText}
-        </a>
-      </div>
+      <React.StrictMode>
+        <div className="container">
+          <img src={imageUrl} alt="area" />
+          <a href={imageUrl} download onClick={(e) => onButtonClick(e)}>
+            {buttonText}
+          </a>
+        </div>
+      </React.StrictMode>
     ),
-    []
+    [imageUrl, buttonText]
   );
 };
 
